@@ -1,0 +1,31 @@
+Tablas:
+    Producto: | Id | Nombre | Marca | Descripcion | Proveedor | Borrado |
+
+    Stock: | Id | Id Productos | Fecha Compra |
+
+    Venta: | Id | Id Stock | Precio | Fecha |
+
+    Inversion: | Id | Fecha | Monto | Descripcion |
+
+Funcionalidades:
+    
+    Productos:
+        nuevo
+        modificar
+        eliminacionLogica
+        ver
+
+    Stock:
+        ver
+        buscar
+        ampliar
+
+    Ventas:
+        realizar
+        verGanancias (mes/dia/otros intervalos)
+        resumenFinanciero
+
+    Inversiones: 
+        ver
+
+        
