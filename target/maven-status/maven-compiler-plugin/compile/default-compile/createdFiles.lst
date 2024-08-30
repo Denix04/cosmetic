@@ -1,3 +1,5 @@
 com/delhi/gui/AppPanel.class
+com/delhi/persistence/entities/Inversion.class
 com/delhi/App.class
 com/delhi/gui/AppFrame.class
+com/delhi/persistence/entities/Venta.class
