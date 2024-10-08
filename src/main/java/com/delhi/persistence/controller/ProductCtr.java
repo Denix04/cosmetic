@@ -30,7 +30,7 @@ public class ProductCtr {
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println("Error in create new product in database" 
+            System.err.println("DB Error: Appending new product in database" 
                     + e.getMessage());
         }
     }
@@ -42,7 +42,7 @@ public class ProductCtr {
             prods = em.createQuery( "SELECT * FROM Productos WHERE name = \"" + name + "\"")
                 .getResultList();
         } catch (Exception e) {
-            System.err.println("Error in find" + name + " products"
+            System.err.println("DB Error: Finging " + name + " products"
                     + e.getMessage());
         }
         
@@ -54,7 +54,7 @@ public class ProductCtr {
         try {
             prods = em.createQuery("SELECT * FROM Productos").getResultList();
         } catch (Exception e) {
-            System.err.println("Error in find all the products"
+            System.err.println("DB Error: Finding all the products"
                     + e.getMessage());
         }
         
@@ -75,7 +75,7 @@ public class ProductCtr {
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println("Error in remove product in database" 
+            System.err.println("DB Error: Updating product" 
                     + e.getMessage());
         }
     }
@@ -92,7 +92,7 @@ public class ProductCtr {
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println("Error in remove product in database" 
+            System.err.println("DB Error: Deleting product" 
                     + e.getMessage());
         }
     }
