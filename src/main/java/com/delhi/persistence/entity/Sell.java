@@ -1,29 +1,29 @@
-package com.delhi.persistence.entities;
+package com.delhi.persistence.entity;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Ventas")
-public class Venta {
+public class Sell {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-/**
     @ManyToOne
     @JoinColumn(name = "product_Id")
-    private long idProduct;
-**/
+    private Product product;
 
     private double salePrice;
     private LocalDate buyDate;
 
-    public Venta() {
+    public Sell() {
 
     }
 
-    public Venta(double salePrice, LocalDate buyDate) {
+    public Sell(Product product, double salePrice, LocalDate buyDate) {
+        this.product = product;
         this.salePrice = salePrice;
         this.buyDate = buyDate;
     }

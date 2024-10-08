@@ -1,7 +1,20 @@
+<< Productos >>
+
 Tablas:
     Producto: | Id | Nombre | Marca | Descripcion | Proveedor | Borrado |
+        son los productos en general.
 
-    Stock: | Id | Id Productos | Fecha Compra |
+        maquillage:
+            bagues
+            millanel
+        perfume:
+            bagues
+            millanel
+
+        masculino
+        femenino
+
+    Stock: | Id | Id Productos | Fecha Compra | sellIt |
 
     Venta: | Id | Id Stock | Precio | Fecha |
 
@@ -29,3 +42,7 @@ Funcionalidades:
         ver
 
         
+<< Clientes >>
+
+Tablas:
+    Clients: | name | surname | purchases | account |

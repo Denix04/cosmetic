@@ -1,11 +1,13 @@
-package com.delhi.persistence.entities;
+package com.delhi.persistence.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder.In;
+
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Inversiones")
-public class Inversion {
+public class Investment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,11 +17,11 @@ public class Inversion {
     private double amount;
     private String description;
 
-    public Inversion() {
+    public Investment() {
 
     }
 
-    public Inversion(LocalDate date, double amount, String description) {
+    public Investment(LocalDate date, double amount, String description) {
         this.date = date;
         this.amount = amount;
         this.description = description;
