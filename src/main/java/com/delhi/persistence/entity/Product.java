@@ -36,4 +36,20 @@ public class Product {
     public Long getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        String ret;
+        ret = 
+            "Producto: " + name + "\n\t" +
+            "Marca: " + brand + "\n\t" +
+            "Provedor: " + provider;
+
+        for(String elem : attr.keySet()) {
+            ret = ret + "\n\t" + elem + ": " + attr.get(elem);
+        }
+
+        return ret;
+    }
+
 }

@@ -2,11 +2,14 @@ com/delhi/logic/Controller.class
 com/delhi/persistence/entity/Product.class
 com/delhi/gui/AppFrame.class
 com/delhi/App.class
+com/delhi/persistence/entity/Client.class
 com/delhi/persistence/controller/ProductCtr.class
+com/delhi/persistence/controller/Controller.class
 com/delhi/gui/AppPanel.class
 com/delhi/persistence/entity/Investment.class
 com/delhi/persistence/controller/StockCtr.class
 com/delhi/persistence/controller/SellCtr.class
 com/delhi/persistence/entity/Sell.class
+com/delhi/persistence/controller/ClientCtr.class
 com/delhi/persistence/controller/InvestmentCtr.class
 com/delhi/persistence/entity/Stock.class

@@ -1,5 +1,7 @@
 package com.delhi.persistence.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +12,18 @@ public class Stock {
 
     @ManyToOne
     @JoinColumn(name = "product_Id")
-    private Product products; 
+    private Product product; 
+
+    private LocalDate buyDate;
+    private double buyPrice;
+
+    public Stock() {
+    }
+
+    public Stock(Product prod, LocalDate buyDate, double buyPrice) {
+        this.product = prod;
+        this.buyDate = buyDate;
+        this.buyPrice = buyPrice;
+    }
     
 }

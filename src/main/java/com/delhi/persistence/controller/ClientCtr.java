@@ -1,5 +1,6 @@
 package com.delhi.persistence.controller;
 
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -9,56 +10,58 @@ import java.util.List;
 
 import com.delhi.persistence.entity.*;
 
-public class SellCtr {
-
+public class ClientCtr {
     private EntityManagerFactory emf;
 
-    public SellCtr() {
+    public ClientCtr() {
         emf = Persistence.createEntityManagerFactory("cosmetic");
     }
 
-    public SellCtr(EntityManagerFactory emf) {
+    public ClientCtr(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
-    public void create(Sell sell) {
+    public void create(Client customer) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            em.persist(sell);
+            em.persist(customer);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println("DB Error: Appending sell" + e.getMessage());
+            System.err.println("DB Error: Appending new customer in database" 
+                    + e.getMessage());
         }
     }
 
-    public List<Sell> findByClient(String clientName) {
+    public List<Client> findByName(String name) {
         EntityManager em = emf.createEntityManager();
-        List<Sell> sells = null;
+        List<Client> customers = null;
         try {
-//TODO make for find sell of a client
+            customers = em.createQuery(
+                "FROM Client WHERE name = \"" + name + "\"", Client.class)
+                .getResultList();
         } catch (Exception e) {
             System.err.println(
-                "DB Error: Finging sells for " + clientName + " in stock"
-                + e.getMessage());
+                "DB Error: Finging " + name + " customer" + e.getMessage());
         }
         
-        return sells;
+        return customers;
     }
-    public List<Sell> findAll() {
+    public List<Client> findAll() {
         EntityManager em = emf.createEntityManager();
-        List<Sell> sells = null;
+        List<Client> customers = null;
         try {
-            sells = em.createQuery("FROM Sell", Sell.class).getResultList();
+            customers = em.createQuery( "FROM Client",Client.class)
+                .getResultList();
         } catch (Exception e) {
-            System.err.println("DB Error: Finding all the Sell"
-                    + e.getMessage());
+            System.err.println(
+                "DB Error: Finding all the customers" + e.getMessage());
         }
         
-        return sells;
+        return customers;
     }
 
     public void update(Long id) {
@@ -67,15 +70,16 @@ public class SellCtr {
 
         try {
             transaction.begin();
-            Sell sells = em.find(Sell.class, id);
-            if(sells != null) {
-//TODO make the change in the sells to update
-                em.merge(sells);
+            Client customer = em.find(Client.class, id);
+            if(customer != null) {
+//TODO make the change in the customeruct to update
+                em.merge(customer);
             }
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println( "DB Error: Updating Sell" + e.getMessage());
+            System.err.println(
+                "DB Error: Updating customer" + e.getMessage());
         }
     }
 
@@ -85,13 +89,15 @@ public class SellCtr {
 
         try {
             transaction.begin();
-            Sell sells = em.find(Sell.class, id);
-            if(sells != null)
-                em.remove(sells);
+            Client customer = em.find(Client.class, id);
+            if(customer != null)
+                em.remove(customer);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println("DB Error: Deleting sell" + e.getMessage());
+            System.err.println("DB Error: Deleting customer" 
+                    + e.getMessage());
         }
     }
+    
 }

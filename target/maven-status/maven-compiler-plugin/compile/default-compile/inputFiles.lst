@@ -1,11 +1,14 @@
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/gui/AppPanel.java
-/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Sell.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Product.java
-/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Stock.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Investment.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/controller/StockCtr.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/App.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/controller/ProductCtr.java
+/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/controller/ClientCtr.java
+/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/controller/Controller.java
+/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Sell.java
+/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Stock.java
+/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Client.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/controller/SellCtr.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/gui/AppFrame.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/logic/Controller.java

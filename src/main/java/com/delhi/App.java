@@ -3,6 +3,7 @@ package com.delhi;
 import jakarta.persistence.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.delhi.gui.*;
 import com.delhi.persistence.controller.ProductCtr;
@@ -44,8 +45,13 @@ public class App {
         prodCtr.create(prod2);
         prodCtr.create(prod3);
 
-        prodCtr.delete(prod.getId());
-        prodCtr.delete(prod2.getId());
+        List<Product> prods = prodCtr.findAll();
+        List<Product> prodsByName = prodCtr.findByName("labial");
 
+        for(Product pro : prods)
+            System.out.println(pro.toString());
+            
+        for(Product pro : prodsByName)
+            System.out.println(pro.toString());
     }
 }

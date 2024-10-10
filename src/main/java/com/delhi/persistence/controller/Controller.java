@@ -7,58 +7,59 @@ import jakarta.persistence.Persistence;
 
 import java.util.List;
 
-import com.delhi.persistence.entity.*;
+public class Controller<T> {
+    protected EntityManagerFactory emf;
+    protected Class<T> cls;
 
-public class SellCtr {
-
-    private EntityManagerFactory emf;
-
-    public SellCtr() {
-        emf = Persistence.createEntityManagerFactory("cosmetic");
+    public Controller(String PersUnit, Class<T> cls) {
+        emf = Persistence.createEntityManagerFactory(PersUnit);
+        this.cls = cls;
     }
 
-    public SellCtr(EntityManagerFactory emf) {
+    public Controller(EntityManagerFactory emf, Class<T> cls) {
         this.emf = emf;
+        this.cls = cls;
     }
 
-    public void create(Sell sell) {
+    public void create(T elemt) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
         try {
             transaction.begin();
-            em.persist(sell);
+            em.persist(elemt);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println("DB Error: Appending sell" + e.getMessage());
+            System.err.println("DB Error: Appending new element in database" 
+                    + e.getMessage());
         }
     }
 
-    public List<Sell> findByClient(String clientName) {
+    public T find(Long id) {
         EntityManager em = emf.createEntityManager();
-        List<Sell> sells = null;
+        T elemt = null;
         try {
-//TODO make for find sell of a client
+            elemt = em.find(cls, id);
         } catch (Exception e) {
             System.err.println(
-                "DB Error: Finging sells for " + clientName + " in stock"
-                + e.getMessage());
+                "DB Error: Finging element" + e.getMessage());
         }
         
-        return sells;
+        return elemt;
     }
-    public List<Sell> findAll() {
+    public List<T> findAll() {
         EntityManager em = emf.createEntityManager();
-        List<Sell> sells = null;
+        List<T> elemts = null;
         try {
-            sells = em.createQuery("FROM Sell", Sell.class).getResultList();
+            elemts = em.createQuery("FROM " + cls.getName(),cls)
+                .getResultList();
         } catch (Exception e) {
-            System.err.println("DB Error: Finding all the Sell"
-                    + e.getMessage());
+            System.err.println(
+                "DB Error: Finding all the elements " + e.getMessage());
         }
         
-        return sells;
+        return elemts;
     }
 
     public void update(Long id) {
@@ -67,15 +68,16 @@ public class SellCtr {
 
         try {
             transaction.begin();
-            Sell sells = em.find(Sell.class, id);
-            if(sells != null) {
-//TODO make the change in the sells to update
-                em.merge(sells);
+            T elemt = em.find(cls, id);
+            if(elemt != null) {
+//TODO make the change in the elemtuct to update
+                em.merge(elemt);
             }
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println( "DB Error: Updating Sell" + e.getMessage());
+            System.err.println(
+                "DB Error: Updating element" + e.getMessage());
         }
     }
 
@@ -85,13 +87,14 @@ public class SellCtr {
 
         try {
             transaction.begin();
-            Sell sells = em.find(Sell.class, id);
-            if(sells != null)
-                em.remove(sells);
+            T elemt = em.find(cls, id);
+            if(elemt != null)
+                em.remove(elemt);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
-            System.err.println("DB Error: Deleting sell" + e.getMessage());
+            System.err.println("DB Error: Deleting element" 
+                    + e.getMessage());
         }
     }
 }

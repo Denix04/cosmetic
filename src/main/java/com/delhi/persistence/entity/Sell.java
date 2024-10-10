@@ -15,17 +15,27 @@ public class Sell {
     @JoinColumn(name = "product_Id")
     private Product product;
 
+    @ManyToOne
+    @JoinColumn(name = "client_Id")
+    private Client client;
+
+    private double buyPrice;
     private double salePrice;
     private LocalDate buyDate;
+    private LocalDate sellDate;
+    
 
     public Sell() {
 
     }
 
-    public Sell(Product product, double salePrice, LocalDate buyDate) {
+    public Sell(Product product, double buyPrice, double salePrice,
+            LocalDate buyDate, LocalDate sellDate) {
         this.product = product;
+        this.buyPrice = buyPrice;
         this.salePrice = salePrice;
         this.buyDate = buyDate;
+        this.sellDate = sellDate;
     }
 
     public void setSalePrice(double salePrice) {
