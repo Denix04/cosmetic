@@ -6,29 +6,33 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.delhi.gui.*;
+import com.delhi.gui.panel.MenuPanel;
 import com.delhi.persistence.controller.ProductCtr;
 import com.delhi.persistence.entity.Product;
 
 public class App {
     public static void main(String[] args ) {
+        //EntityManagerFactory emf;
+        //emf = Persistence.createEntityManagerFactory("cosmetic");
 
-        AppPanel panel = new AppPanel();
-        AppFrame frame = new AppFrame(panel);
-        System.out.println("Hello World!" );
+        MenuPanel mp = new MenuPanel();
+        Frame frame = new Frame(800,600);
 
+        frame.add(mp);
+    }
+}
+
+/*
         HashMap<String,String> attr = new HashMap<>();
-
         attr.put("type", "perfume");
         attr.put("gender", "male");
         attr.put("brand", "bagues");
 
         HashMap<String,String> attr2 = new HashMap<>();
-
         attr2.put("type", "maquillage");
         attr2.put("brand", "millanel");
 
         HashMap<String,String> attr3 = new HashMap<>();
-
         attr3.put("type", "Perfume");
         attr3.put("brand", "Mavelin");
         attr3.put("Color", "Red");
@@ -37,8 +41,6 @@ public class App {
         Product prod2 = new Product(attr2, "nose", "millanel", "tu mama"); 
         Product prod3 = new Product(attr3, "labial", "Mavelin", "Mabel"); 
 
-        EntityManagerFactory emf;
-        emf = Persistence.createEntityManagerFactory("cosmetic");
 
         ProductCtr prodCtr = new ProductCtr(emf);
         prodCtr.create(prod);
@@ -53,5 +55,4 @@ public class App {
             
         for(Product pro : prodsByName)
             System.out.println(pro.toString());
-    }
-}
+*/

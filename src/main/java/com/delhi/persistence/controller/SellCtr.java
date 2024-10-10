@@ -1,38 +1,17 @@
 package com.delhi.persistence.controller;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-
-import java.util.List;
-
 import com.delhi.persistence.entity.*;
 
-public class SellCtr {
+import java.util.List;
+import jakarta.persistence.*;
 
-    private EntityManagerFactory emf;
+public class SellCtr extends Controller<Sell> {
 
     public SellCtr() {
-        emf = Persistence.createEntityManagerFactory("cosmetic");
+        super("cosmetic", Sell.class);
     }
 
     public SellCtr(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-
-    public void create(Sell sell) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-
-        try {
-            transaction.begin();
-            em.persist(sell);
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-            System.err.println("DB Error: Appending sell" + e.getMessage());
-        }
+        super(emf, Sell.class);
     }
 
     public List<Sell> findByClient(String clientName) {
@@ -47,51 +26,5 @@ public class SellCtr {
         }
         
         return sells;
-    }
-    public List<Sell> findAll() {
-        EntityManager em = emf.createEntityManager();
-        List<Sell> sells = null;
-        try {
-            sells = em.createQuery("FROM Sell", Sell.class).getResultList();
-        } catch (Exception e) {
-            System.err.println("DB Error: Finding all the Sell"
-                    + e.getMessage());
-        }
-        
-        return sells;
-    }
-
-    public void update(Long id) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-
-        try {
-            transaction.begin();
-            Sell sells = em.find(Sell.class, id);
-            if(sells != null) {
-//TODO make the change in the sells to update
-                em.merge(sells);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-            System.err.println( "DB Error: Updating Sell" + e.getMessage());
-        }
-    }
-
-    public void delete(Long id) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-
-        try {
-            transaction.begin();
-            Sell sells = em.find(Sell.class, id);
-            if(sells != null)
-                em.remove(sells);
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-            System.err.println("DB Error: Deleting sell" + e.getMessage());
-        }
     }
 }
