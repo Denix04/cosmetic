@@ -1,8 +1,6 @@
 package com.delhi.persistence.controller;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -11,13 +9,8 @@ import com.delhi.persistence.entity.*;
 public class ProductCtr extends Controller<Product>{
 
     public ProductCtr() {
-        super("cosmetic", Product.class);
+        super(Product.class);
     }
-
-    public ProductCtr(EntityManagerFactory emf) {
-        super(emf, Product.class);
-    }
-
 
     public List<Product> findByName(String name) {
         EntityManager em = emf.createEntityManager();
@@ -29,7 +22,7 @@ public class ProductCtr extends Controller<Product>{
         } catch (Exception e) {
             System.err.println(
                 "DB Error: Finging " + name + " products" + e.getMessage());
-        }
+        } finally { em.close(); }
         
         return prods;
     }

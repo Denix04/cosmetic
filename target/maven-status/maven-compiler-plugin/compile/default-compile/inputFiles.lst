@@ -13,8 +13,9 @@
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/entity/Client.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/gui/panel/StockPanel.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/gui/panel/MenuPanel.java
+/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/logic/ProductSvc.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/controller/SellCtr.java
-/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/logic/Controller.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/persistence/controller/InvestmentCtr.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/gui/panel/FinancePanel.java
+/home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/gui/panel/NewProdPanel.java
 /home/alvaro/Documents/Programacion/Java/Programas/cosmetic/src/main/java/com/delhi/gui/Frame.java

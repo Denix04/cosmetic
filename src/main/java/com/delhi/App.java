@@ -42,7 +42,7 @@ public class App {
         Product prod3 = new Product(attr3, "labial", "Mavelin", "Mabel"); 
 
 
-        ProductCtr prodCtr = new ProductCtr(emf);
+        ProductCtr prodCtr = new ProductCtr();
         prodCtr.create(prod);
         prodCtr.create(prod2);
         prodCtr.create(prod3);

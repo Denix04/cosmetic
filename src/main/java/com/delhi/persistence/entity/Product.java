@@ -15,7 +15,7 @@ public class Product {
     private String brand;
     private String provider;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @MapKeyColumn(name = "attr")
     @Column(name = "value")
     @CollectionTable(name = "Prod_Attr", joinColumns = @JoinColumn(name = "Product_id"))

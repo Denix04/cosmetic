@@ -7,11 +7,7 @@ import jakarta.persistence.*;
 public class SellCtr extends Controller<Sell> {
 
     public SellCtr() {
-        super("cosmetic", Sell.class);
-    }
-
-    public SellCtr(EntityManagerFactory emf) {
-        super(emf, Sell.class);
+        super(Sell.class);
     }
 
     public List<Sell> findByClient(String clientName) {
@@ -23,7 +19,7 @@ public class SellCtr extends Controller<Sell> {
             System.err.println(
                 "DB Error: Finging sells for " + clientName + " in stock"
                 + e.getMessage());
-        }
+        } finally { em.close(); }
         
         return sells;
     }

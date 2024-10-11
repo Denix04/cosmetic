@@ -7,11 +7,7 @@ import jakarta.persistence.*;
 public class ClientCtr extends Controller<Client> {
 
     public ClientCtr() {
-        super("cosmetic", Client.class);
-    }
-
-    public ClientCtr(EntityManagerFactory emf) {
-        super(emf, Client.class);
+        super(Client.class);
     }
 
     public List<Client> findByName(String name) {
@@ -24,8 +20,8 @@ public class ClientCtr extends Controller<Client> {
         } catch (Exception e) {
             System.err.println(
                 "DB Error: Finging " + name + " customer" + e.getMessage());
-        }
-        
+        } finally { em.close(); }
+
         return customers;
     }
 }

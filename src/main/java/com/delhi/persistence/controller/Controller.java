@@ -1,23 +1,16 @@
 package com.delhi.persistence.controller;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 public class Controller<T> {
-    protected EntityManagerFactory emf;
+    protected static EntityManagerFactory emf;
+    static { emf = Persistence.createEntityManagerFactory("cosmetic");}
+
     protected Class<T> cls;
 
-    public Controller(String PersUnit, Class<T> cls) {
-        emf = Persistence.createEntityManagerFactory(PersUnit);
-        this.cls = cls;
-    }
-
-    public Controller(EntityManagerFactory emf, Class<T> cls) {
-        this.emf = emf;
+    public Controller(Class<T> cls) {
         this.cls = cls;
     }
 
@@ -33,7 +26,7 @@ public class Controller<T> {
             transaction.rollback();
             System.err.println("DB Error: Appending new element in database" 
                     + e.getMessage());
-        }
+        } finally { em.close();}
     }
 
     public T find(Long id) {
@@ -44,7 +37,7 @@ public class Controller<T> {
         } catch (Exception e) {
             System.err.println(
                 "DB Error: Finging element" + e.getMessage());
-        }
+        } finally { em.close();}
         
         return elemt;
     }
@@ -57,7 +50,7 @@ public class Controller<T> {
         } catch (Exception e) {
             System.err.println(
                 "DB Error: Finding all the elements " + e.getMessage());
-        }
+        } finally { em.close();}
         
         return elemts;
     }
@@ -78,7 +71,7 @@ public class Controller<T> {
             transaction.rollback();
             System.err.println(
                 "DB Error: Updating element" + e.getMessage());
-        }
+        } finally { em.close();}
     }
 
     public void delete(Long id) {
@@ -95,6 +88,6 @@ public class Controller<T> {
             transaction.rollback();
             System.err.println("DB Error: Deleting element" 
                     + e.getMessage());
-        }
+        } finally { em.close();}
     }
 }
