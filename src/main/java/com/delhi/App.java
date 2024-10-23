@@ -1,14 +1,14 @@
 package com.delhi;
 
-import jakarta.persistence.*;
+import jakarta.*;
 
 import java.util.HashMap;
 import java.util.List;
 
 import com.delhi.gui.*;
 import com.delhi.gui.panel.MenuPanel;
-import com.delhi.persistence.controller.ProductCtr;
-import com.delhi.persistence.entity.Product;
+import com.delhi.controller.ProductCtr;
+import com.delhi.entity.Product;
 
 public class App {
     public static void main(String[] args ) {

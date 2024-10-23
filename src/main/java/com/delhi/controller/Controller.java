@@ -1,6 +1,6 @@
-package com.delhi.persistence.controller;
+package com.delhi.controller;
 
-import jakarta.persistence.*;
+import jakarta.*;
 
 import java.util.List;
 

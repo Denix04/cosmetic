@@ -7,8 +7,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import com.delhi.gui.Frame;
-import com.delhi.persistence.controller.*;
-import com.delhi.persistence.entity.Product;
+import com.delhi.controller.*;
+import com.delhi.entity.Product;
 
 public class ProductPanel extends JPanel {
 

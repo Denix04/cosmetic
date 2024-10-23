@@ -1,10 +1,10 @@
-package com.delhi.persistence.controller;
+package com.delhi.controller;
 
-import jakarta.persistence.*;
+import jakarta.*;
 
 import java.util.List;
 
-import com.delhi.persistence.entity.*;
+import com.delhi.entity.*;
 
 public class ProductCtr extends Controller<Product>{
 

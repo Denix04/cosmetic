@@ -1,8 +1,8 @@
-package com.delhi.persistence.controller;
-import com.delhi.persistence.entity.*;
+package com.delhi.controller;
+import com.delhi.entity.*;
 
 import java.util.List;
-import jakarta.persistence.*;
+import jakarta.*;
 
 public class ClientCtr extends Controller<Client> {
 

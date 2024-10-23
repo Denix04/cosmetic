@@ -1,5 +1,5 @@
-package com.delhi.persistence.controller;
-import com.delhi.persistence.entity.*;
+package com.delhi.controller;
+import com.delhi.entity.*;
 
 public class InvestmentCtr extends Controller<Investment> {
 

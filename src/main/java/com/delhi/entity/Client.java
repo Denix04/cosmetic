@@ -1,6 +1,6 @@
-package com.delhi.persistence.entity;
+package com.delhi.entity;
 
-import jakarta.persistence.*;
+import jakarta.*;
 import java.util.List;
 
 @Entity

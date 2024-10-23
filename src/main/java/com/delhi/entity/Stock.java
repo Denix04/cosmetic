@@ -1,8 +1,8 @@
-package com.delhi.persistence.entity;
+package com.delhi.entity;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.*;
+import jakarta.*;
 
 @Entity
 public class Stock {
