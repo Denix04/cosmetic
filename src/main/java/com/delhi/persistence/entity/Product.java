@@ -37,19 +37,25 @@ public class Product {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public Map<String,String> getAttr() {
+        return attr;
+    }
+
     @Override
     public String toString() {
-        String ret;
-        ret = 
-            "Producto: " + name + "\n\t" +
-            "Marca: " + brand + "\n\t" +
-            "Provedor: " + provider;
-
-        for(String elem : attr.keySet()) {
-            ret = ret + "\n\t" + elem + ": " + attr.get(elem);
-        }
-
-        return ret;
+        return name;
     }
 
 }

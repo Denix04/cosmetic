@@ -15,6 +15,7 @@ public class App {
         //EntityManagerFactory emf;
         //emf = Persistence.createEntityManagerFactory("cosmetic");
 
+
         MenuPanel mp = new MenuPanel();
         Frame frame = new Frame(800,600);
 

@@ -7,6 +7,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import com.delhi.gui.Frame;
+import com.delhi.persistence.controller.*;
+import com.delhi.persistence.entity.Product;
 
 public class ProductPanel extends JPanel {
 
@@ -34,7 +36,7 @@ public class ProductPanel extends JPanel {
     private void initCmp() {
         backBtn.setBounds(0,0,100,30);
         newBtn.setBounds(101,0,100,30);
-        prodTbl.setBounds(30, 30,500,500);
+        prodTbl.setBounds(40,40,920,500);
     }
 
     private void addCmp() {
@@ -68,8 +70,12 @@ public class ProductPanel extends JPanel {
         prodTblMod = new DefaultTableModel(columnNames, 0);
         prodTblMod.addRow(columnNames);
 
-        Object[] row1 = {"p","m","p","attr"};
-        prodTblMod.addRow(row1);
+        //ProductCtr pc = new ProductCtr();
+
+        //for(Product elem : pc.findAll()) {
+            //Object[] row = {elem,elem.getBrand(),elem.getProvider(),"..." };
+            //prodTblMod.addRow(row);
+        //}
     }
     
 }

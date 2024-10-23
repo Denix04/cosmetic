@@ -1,5 +1,6 @@
 com/delhi/gui/panel/SellPanel.class
 com/delhi/persistence/entity/Product.class
+com/delhi/gui/panel/FinancePanel$1.class
 com/delhi/gui/panel/MenuPanel$1.class
 com/delhi/App.class
 com/delhi/gui/panel/ProductPanel.class
@@ -17,6 +18,7 @@ com/delhi/persistence/controller/ClientCtr.class
 com/delhi/persistence/controller/InvestmentCtr.class
 com/delhi/persistence/entity/Stock.class
 com/delhi/logic/ProductSvc.class
+com/delhi/gui/panel/FinancePanel$2.class
 com/delhi/persistence/controller/ProductCtr.class
 com/delhi/persistence/controller/Controller.class
 com/delhi/gui/panel/ProductPanel$1.class
@@ -26,3 +28,4 @@ com/delhi/gui/panel/NewProdPanel$1.class
 com/delhi/gui/panel/SellPanel$1.class
 com/delhi/gui/panel/NewProdPanel.class
 com/delhi/gui/panel/MenuPanel$2.class
+com/delhi/gui/panel/FinancePanel.class

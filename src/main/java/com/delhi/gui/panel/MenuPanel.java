@@ -51,7 +51,7 @@ public class MenuPanel extends JPanel {
         prodBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(600, 600);
+                Frame frm = new Frame(1000, 700);
                 ProductPanel pp = new ProductPanel(frm);
                 frm.add(pp);
             }
@@ -60,7 +60,7 @@ public class MenuPanel extends JPanel {
         stockBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(600, 600);
+                Frame frm = new Frame(1000, 700);
                 StockPanel pp = new StockPanel(frm);
                 frm.add(pp);
             }
@@ -69,9 +69,18 @@ public class MenuPanel extends JPanel {
         sellsBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(600, 600);
+                Frame frm = new Frame(1000, 700);
                 SellPanel pp = new SellPanel(frm);
                 frm.add(pp);
+            }
+        });
+
+        invBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Frame frm = new Frame(1000, 700);
+                FinancePanel fp = new FinancePanel(frm);
+                frm.add(fp);
             }
         });
 
