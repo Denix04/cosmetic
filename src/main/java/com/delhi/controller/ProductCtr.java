@@ -1,6 +1,6 @@
 package com.delhi.controller;
 
-import jakarta.*;
+import jakarta.persistence.*;
 
 import java.util.List;
 

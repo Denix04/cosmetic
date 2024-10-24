@@ -1,7 +1,7 @@
 package com.delhi.entity;
 
 
-import jakarta.*;
+import jakarta.persistence.*;
 import java.util.Map;
 
 @Entity

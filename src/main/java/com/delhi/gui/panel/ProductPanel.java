@@ -70,12 +70,12 @@ public class ProductPanel extends JPanel {
         prodTblMod = new DefaultTableModel(columnNames, 0);
         prodTblMod.addRow(columnNames);
 
-        //ProductCtr pc = new ProductCtr();
+        ProductCtr pc = new ProductCtr();
 
-        //for(Product elem : pc.findAll()) {
-            //Object[] row = {elem,elem.getBrand(),elem.getProvider(),"..." };
-            //prodTblMod.addRow(row);
-        //}
+        for(Product elem : pc.findAll()) {
+            Object[] row = {elem,elem.getBrand(),elem.getProvider(),"..." };
+            prodTblMod.addRow(row);
+        }
     }
     
 }

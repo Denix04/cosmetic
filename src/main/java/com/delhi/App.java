@@ -1,6 +1,6 @@
 package com.delhi;
 
-import jakarta.*;
+import jakarta.persistence.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +12,6 @@ import com.delhi.entity.Product;
 
 public class App {
     public static void main(String[] args ) {
-        //EntityManagerFactory emf;
-        //emf = Persistence.createEntityManagerFactory("cosmetic");
-
 
         MenuPanel mp = new MenuPanel();
         Frame frame = new Frame(800,600);
@@ -56,4 +53,5 @@ public class App {
             
         for(Product pro : prodsByName)
             System.out.println(pro.toString());
+
 */

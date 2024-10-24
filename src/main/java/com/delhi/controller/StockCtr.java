@@ -2,7 +2,7 @@ package com.delhi.controller;
 import com.delhi.entity.*;
 
 import java.util.List;
-import jakarta.*;
+import jakarta.persistence.*;
 
 public class StockCtr extends Controller<Stock> {
 

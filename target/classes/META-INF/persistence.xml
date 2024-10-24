@@ -6,11 +6,11 @@
              version="3.0">
 
     <persistence-unit name="cosmetic">
-        <class>com.delhi.persistence.entity.Product</class>
-        <class>com.delhi.persistence.entity.Venta</class>
-        <class>com.delhi.persistence.entity.Inversion</class>
-        <class>com.delhi.persistence.entity.Stock</class>
-        <class>com.delhi.persistence.entity.Client</class>
+        <class>com.delhi.entity.Product</class>
+        <class>com.delhi.entity.Venta</class>
+        <class>com.delhi.entity.Inversion</class>
+        <class>com.delhi.entity.Stock</class>
+        <class>com.delhi.entity.Client</class>
         
         <properties>
             <!-- Database connection settings -->

@@ -2,7 +2,7 @@ package com.delhi.entity;
 
 import java.time.LocalDate;
 
-import jakarta.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Stock {

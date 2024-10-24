@@ -1,7 +1,7 @@
 package com.delhi.entity;
 
-import jakarta.*;
-import jakarta.criteria.CriteriaBuilder.In;
+import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder.In;
 
 import java.time.LocalDate;
 

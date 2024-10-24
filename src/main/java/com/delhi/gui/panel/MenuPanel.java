@@ -9,7 +9,7 @@ import com.delhi.gui.Frame;
 public class MenuPanel extends JPanel {
 
     private JButton stockBtn;
-    private JButton invBtn;
+    private JButton fncBtn;
     private JButton sellsBtn;
     private JButton prodBtn;
     private JButton quitBtn;
@@ -21,20 +21,19 @@ public class MenuPanel extends JPanel {
         prodBtn = new JButton("Productos");
         stockBtn = new JButton("Stock");
         sellsBtn = new JButton("Ventas");
-        invBtn = new JButton("Inversiones");
+        fncBtn = new JButton("Financias");
         quitBtn = new JButton("Salir");
 
         addBtns();
         initBtns();
         addActions();
-
     }
 
     private void addBtns() {
         add(prodBtn);
         add(stockBtn);
         add(sellsBtn);
-        add(invBtn);
+        add(fncBtn);
         add(quitBtn);
     }
 
@@ -42,7 +41,7 @@ public class MenuPanel extends JPanel {
         prodBtn.setBounds   (300,100,150,50);
         stockBtn.setBounds  (300,200,150,50);
         sellsBtn.setBounds  (300,300,150,50);
-        invBtn.setBounds    (300,400,150,50);
+        fncBtn.setBounds    (300,400,150,50);
         quitBtn.setBounds   (300,500,150,50);
     }
 
@@ -75,7 +74,7 @@ public class MenuPanel extends JPanel {
             }
         });
 
-        invBtn.addActionListener(new ActionListener() {
+        fncBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Frame frm = new Frame(1000, 700);
