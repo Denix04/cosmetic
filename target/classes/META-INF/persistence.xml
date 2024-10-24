@@ -22,7 +22,7 @@
              <!-- Hibernate settings -->
             <property name="hibernate.connection.autocommit" value="true"/>
             <property name="hibernate.transaction.jta.platform" value="JakartaJtaPlatform"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/> <!-- Other options: validate, create, create-drop -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- Other options: validate, create, create-drop -->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>           
 

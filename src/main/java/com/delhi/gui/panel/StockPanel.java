@@ -1,26 +1,27 @@
 package com.delhi.gui.panel;
 
-import java.awt.Frame;
+import com.delhi.controller.StockCtr;
+import com.delhi.entity.*;
+import com.delhi.gui.Frame;
 import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class StockPanel extends JPanel {
+    private Frame frm;
 
     private DefaultTableModel prodTblMod;
     private JTable prodTbl;
+
     private JButton backBtn;
-    private Frame frm;
+    private JButton newStockBtn;
 
     public StockPanel(Frame frm) {
         setLayout(null);
 
         this.frm = frm;
 
-        backBtn = new JButton("Volver");
-        initTblModel();
-        prodTbl = new JTable(prodTblMod);
 
         initCmp();
         addCmp();
@@ -28,12 +29,20 @@ public class StockPanel extends JPanel {
     }
 
     private void initCmp() {
+        backBtn = new JButton("Volver");
+        newStockBtn = new JButton("Nuevo");
+
         backBtn.setBounds(0,0,100,30);
-        prodTbl.setBounds(30, 30,500,500);
+        newStockBtn.setBounds(101,0,100,30);
+
+        initTblModel();
+        prodTbl = new JTable(prodTblMod);
+        prodTbl.setBounds(40, 40,920,500);
     }
 
     private void addCmp() {
         add(backBtn);
+        add(newStockBtn);
         add(prodTbl);
     }
 
@@ -45,15 +54,28 @@ public class StockPanel extends JPanel {
                 frm.dispose();
             }
         });
+
+        newStockBtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Frame frm = new Frame(400,400);
+                NewStockPanel nsp = new NewStockPanel(frm);
+                frm.add(nsp);
+            }
+        });
     }
 
     private void initTblModel() {
-        String[] columnNames = {"Producto","Cantidad", "Marca","Provedor","Atributos"};
+        String[] columnNames = {"Fecha Compra", "Producto","Atributos"};
         prodTblMod = new DefaultTableModel(columnNames, 0);
         prodTblMod.addRow(columnNames);
 
-        Object[] row1 = {"p","m","p","attr"};
-        prodTblMod.addRow(row1);
+        StockCtr stockCtr = new StockCtr();
+
+        for(Stock stock : stockCtr.findAll()) {
+            Object[] row = {stock.getBuyDate(), stock, stock.getProduct().getProvider(),"..."};
+            prodTblMod.addRow(row);
+        }
     }
     
     

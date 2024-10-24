@@ -25,5 +25,21 @@ public class Stock {
         this.buyDate = buyDate;
         this.buyPrice = buyPrice;
     }
-    
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public LocalDate getBuyDate() {
+        return buyDate;
+    }
+
+    public double getBuyPrice() {
+        return buyPrice;
+    }
+
+    @Override
+    public String toString() {
+        return product.getName();
+    }
 }

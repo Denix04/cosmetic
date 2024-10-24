@@ -18,8 +18,10 @@ com/delhi/gui/panel/StockPanel.class
 com/delhi/gui/panel/MenuPanel$3.class
 com/delhi/gui/panel/StockPanel$1.class
 com/delhi/gui/panel/NewProdPanel$2.class
+com/delhi/gui/panel/NewStockPanel$1.class
 com/delhi/gui/panel/InvestmentPanel$2.class
 com/delhi/controller/InvestmentCtr.class
+com/delhi/gui/panel/StockPanel$2.class
 com/delhi/entity/Client.class
 com/delhi/gui/panel/NewProdPanel$3.class
 com/delhi/gui/panel/newProdAttrPanel$2.class
@@ -27,6 +29,7 @@ com/delhi/entity/Sell.class
 com/delhi/gui/panel/FinancePanel$2.class
 com/delhi/controller/Controller.class
 com/delhi/entity/Investment.class
+com/delhi/gui/panel/NewStockPanel.class
 com/delhi/gui/panel/ProductPanel$1.class
 com/delhi/controller/ProductCtr.class
 com/delhi/gui/panel/MenuPanel$4.class
@@ -34,6 +37,7 @@ com/delhi/gui/panel/MenuPanel$5.class
 com/delhi/gui/panel/MenuPanel.class
 com/delhi/controller/ClientCtr.class
 com/delhi/gui/panel/NewProdPanel$1.class
+com/delhi/gui/panel/NewStockPanel$2.class
 com/delhi/gui/panel/SellPanel$1.class
 com/delhi/controller/StockCtr.class
 com/delhi/gui/panel/NewProdPanel.class

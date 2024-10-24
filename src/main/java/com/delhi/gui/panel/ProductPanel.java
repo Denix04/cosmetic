@@ -23,17 +23,17 @@ public class ProductPanel extends JPanel {
 
         this.frm = frm;
 
-        backBtn = new JButton("Volver");
-        newBtn = new JButton("Nuevo");
-        initTblModel();
-        prodTbl = new JTable(prodTblMod);
-
         initCmp();
         addCmp();
         addActions();
     }
 
     private void initCmp() {
+        backBtn = new JButton("Volver");
+        newBtn = new JButton("Nuevo");
+        initTblModel();
+        prodTbl = new JTable(prodTblMod);
+
         backBtn.setBounds(0,0,100,30);
         newBtn.setBounds(101,0,100,30);
         prodTbl.setBounds(40,40,920,500);
