@@ -1,8 +1,8 @@
 # TODO
-- connect the gui for all
-- search for all
+- gui for ventas
 - I have todo the logic for finance
 - make the client system
+- refactor a little of code
 
 # Productos
 

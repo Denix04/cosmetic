@@ -12,16 +12,21 @@ import com.delhi.entity.Product;
 
 public class ProductPanel extends JPanel {
 
+    private ProductCtr prodCtr;
+    private Frame frm;
+
     private DefaultTableModel prodTblMod;
     private JTable prodTbl;
     private JButton backBtn;
     private JButton newBtn;
-    private Frame frm;
+    private JButton deleteBtn;
 
     public ProductPanel(Frame frm) {
-        setLayout(null);
 
+        prodCtr = new ProductCtr();
         this.frm = frm;
+
+        setLayout(null);
 
         initCmp();
         addCmp();
@@ -31,17 +36,21 @@ public class ProductPanel extends JPanel {
     private void initCmp() {
         backBtn = new JButton("Volver");
         newBtn = new JButton("Nuevo");
+        deleteBtn = new JButton("Eliminar");
+
         initTblModel();
         prodTbl = new JTable(prodTblMod);
 
-        backBtn.setBounds(0,0,100,30);
-        newBtn.setBounds(101,0,100,30);
+        backBtn.setBounds(0,0,99,30);
+        newBtn.setBounds(101,0,99,30);
+        deleteBtn.setBounds(201,0,99,30);
         prodTbl.setBounds(40,40,920,500);
     }
 
     private void addCmp() {
         add(backBtn);
         add(newBtn);
+        add(deleteBtn);
         add(prodTbl);
     }
 
@@ -63,6 +72,12 @@ public class ProductPanel extends JPanel {
             }
         });
 
+        deleteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deletingFromTbl();
+            }
+        });
     }
 
     private void initTblModel() {
@@ -70,12 +85,20 @@ public class ProductPanel extends JPanel {
         prodTblMod = new DefaultTableModel(columnNames, 0);
         prodTblMod.addRow(columnNames);
 
-        ProductCtr pc = new ProductCtr();
-
-        for(Product elem : pc.findAll()) {
+        for(Product elem : prodCtr.findAll()) {
             Object[] row = {elem,elem.getBrand(),elem.getProvider(),"..." };
             prodTblMod.addRow(row);
         }
     }
-    
+
+    private void deletingFromTbl() {
+        int row = prodTbl.getSelectedRow();
+        int col = prodTbl.getSelectedColumn();
+
+        Product prod = (Product) prodTblMod.getValueAt(row, 0);
+        Long prodId = prod.getId();
+        prodCtr.delete(prodId);
+
+        prodTblMod.removeRow(row);
+    }
 }

@@ -1,14 +1,17 @@
 package com.delhi.gui.panel;
 
+import com.delhi.controller.SellCtr;
 import com.delhi.controller.StockCtr;
 import com.delhi.entity.*;
 import com.delhi.gui.Frame;
 import java.awt.event.*;
+import java.time.LocalDate;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class StockPanel extends JPanel {
+    private StockCtr stockCtr;
     private Frame frm;
 
     private DefaultTableModel prodTblMod;
@@ -16,12 +19,15 @@ public class StockPanel extends JPanel {
 
     private JButton backBtn;
     private JButton newStockBtn;
+    private JButton sellBtn;
+    private JButton deleteBtn;
 
     public StockPanel(Frame frm) {
-        setLayout(null);
 
+        stockCtr = new StockCtr();
         this.frm = frm;
 
+        setLayout(null);
 
         initCmp();
         addCmp();
@@ -31,9 +37,13 @@ public class StockPanel extends JPanel {
     private void initCmp() {
         backBtn = new JButton("Volver");
         newStockBtn = new JButton("Nuevo");
+        sellBtn = new JButton("Vender");
+        deleteBtn = new JButton("Eliminar");
 
-        backBtn.setBounds(0,0,100,30);
-        newStockBtn.setBounds(101,0,100,30);
+        backBtn.setBounds(0,0,99,30);
+        newStockBtn.setBounds(101,0,99,30);
+        sellBtn.setBounds(201,0,99,30);
+        deleteBtn.setBounds(301,0,99,30);
 
         initTblModel();
         prodTbl = new JTable(prodTblMod);
@@ -43,6 +53,7 @@ public class StockPanel extends JPanel {
     private void addCmp() {
         add(backBtn);
         add(newStockBtn);
+        add(sellBtn);
         add(prodTbl);
     }
 
@@ -63,6 +74,20 @@ public class StockPanel extends JPanel {
                 frm.add(nsp);
             }
         });
+
+        sellBtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sellFromTbl();
+            }
+        });
+
+        deleteBtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deletingFromTbl();
+            }
+        });
     }
 
     private void initTblModel() {
@@ -70,13 +95,31 @@ public class StockPanel extends JPanel {
         prodTblMod = new DefaultTableModel(columnNames, 0);
         prodTblMod.addRow(columnNames);
 
-        StockCtr stockCtr = new StockCtr();
-
         for(Stock stock : stockCtr.findAll()) {
             Object[] row = {stock.getBuyDate(), stock, stock.getProduct().getProvider(),"..."};
             prodTblMod.addRow(row);
         }
     }
-    
-    
+
+    private void deletingFromTbl() {
+        int row = prodTbl.getSelectedRow();
+
+        Stock prod = (Stock) prodTblMod.getValueAt(row, 1);
+        Long prodId = prod.getId();
+        stockCtr.delete(prodId);
+
+        prodTblMod.removeRow(row);
+    }
+
+    private void sellFromTbl() {
+        int row = prodTbl.getSelectedRow();
+        Stock stock = (Stock) prodTblMod.getValueAt(row, 1);
+        Long stockId = stock.getId();
+
+        Frame sellFrame = new Frame(400, 400);
+        NewSellPanel sellPanel = new NewSellPanel(sellFrame, stock);
+        sellFrame.add(sellPanel);
+
+        //prodTblMod.removeRow(row);
+    }
 }

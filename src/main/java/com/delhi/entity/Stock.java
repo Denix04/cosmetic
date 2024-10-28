@@ -26,6 +26,10 @@ public class Stock {
         this.buyPrice = buyPrice;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Product getProduct() {
         return product;
     }

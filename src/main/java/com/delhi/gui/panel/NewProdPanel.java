@@ -95,7 +95,7 @@ public class NewProdPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Frame frm = new Frame(400,400);
-                newProdAttrPanel pap = new newProdAttrPanel(frm, attrTblMdl);
+                NewProdAttrPanel pap = new NewProdAttrPanel(frm, attrTblMdl);
                 frm.add(pap);
             }
         });

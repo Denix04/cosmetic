@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.delhi.gui.Frame;
 
-public class newProdAttrPanel extends JPanel {
+public class NewProdAttrPanel extends JPanel {
 
     private Frame frm;
     private DefaultTableModel table;
@@ -21,7 +21,7 @@ public class newProdAttrPanel extends JPanel {
     private JButton submitBtn;
     private JButton cancelBtn;
 
-    public newProdAttrPanel(Frame frm, DefaultTableModel table) {
+    public NewProdAttrPanel(Frame frm, DefaultTableModel table) {
         setLayout(null);
         this.frm = frm;
         this.table = table;
