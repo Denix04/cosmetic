@@ -1,7 +1,6 @@
 package com.delhi.gui.panel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -9,6 +8,7 @@ import javax.swing.*;
 
 import com.delhi.entity.*;
 import com.delhi.gui.*;
+import com.delhi.gui.panel.util.Text;
 import com.delhi.controller.*;
 
 public class NewStockPanel extends JPanel{
@@ -17,8 +17,8 @@ public class NewStockPanel extends JPanel{
     private JButton cancelBtn;
     private JButton submitBtn;
 
-    private JLabel dateLbl;
-    private JTextField dateTxt;
+    private JLabel buyDateLbl;
+    private JTextField buyDateTxt;
 
     private JLabel buyPriceLbl;
     private JTextField buyPriceTxt;
@@ -40,8 +40,8 @@ public class NewStockPanel extends JPanel{
         cancelBtn = new JButton("Cancelar");
         submitBtn = new JButton("Guardar");
 
-        dateLbl = new JLabel("Fecha");
-        dateTxt = new JTextField(LocalDate.now().toString());
+        buyDateLbl = new JLabel("Fecha");
+        buyDateTxt = new JTextField(LocalDate.now().toString());
 
         buyPriceLbl = new JLabel("Precio Compra: ");
         buyPriceTxt = new JTextField();
@@ -50,8 +50,8 @@ public class NewStockPanel extends JPanel{
         initTblModel();
         prodList = new JComboBox<>(prodMdList);
 
-        dateLbl.setBounds   (20,20,150,30);
-        dateTxt.setBounds   (200,20,150,30);
+        buyDateLbl.setBounds   (20,20,150,30);
+        buyDateTxt.setBounds   (200,20,150,30);
 
         buyPriceLbl.setBounds(20,100,150,30);
         buyPriceTxt.setBounds(200,100,150,30);
@@ -67,8 +67,8 @@ public class NewStockPanel extends JPanel{
         add(cancelBtn);
         add(submitBtn);
 
-        add(dateLbl);
-        add(dateTxt);
+        add(buyDateLbl);
+        add(buyDateTxt);
 
         add(buyPriceLbl);
         add(buyPriceTxt);
@@ -89,11 +89,11 @@ public class NewStockPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 StockCtr stockCtr = new StockCtr();
-                Optional<LocalDate> buyDate = getBuyDate();
-                Optional<Double> buyPrice = getBuyPrice();
+                Optional<LocalDate> buyDate = Text.getDate(buyDateTxt);
+                Optional<Double> buyPrice = Text.getDouble(buyPriceTxt);
 
                 if(buyDate.isEmpty()) {
-                    dateTxt.setText("");
+                    buyDateTxt.setText("");
                     return;
                 }
                 if(buyPrice.isEmpty()) {
@@ -114,25 +114,4 @@ public class NewStockPanel extends JPanel{
         ProductCtr prodCtr = new ProductCtr();
         prodMdList.addAll(prodCtr.findAll());
     }
-
-    private Optional<LocalDate> getBuyDate() {
-        Optional<LocalDate> ret;
-        try {
-            ret = Optional.of(LocalDate.parse(dateTxt.getText()));
-        } catch (Exception e) {
-            ret = Optional.empty();
-        }
-        return ret;
-    }
-
-    private Optional<Double> getBuyPrice() {
-        Optional<Double> ret;
-        try {
-            ret = Optional.of(Double.parseDouble(buyPriceTxt.getText()));
-        } catch (Exception e) {
-            ret = Optional.empty();
-        }
-        return ret;
-    }
-    
 }

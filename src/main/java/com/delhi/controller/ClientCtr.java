@@ -10,6 +10,18 @@ public class ClientCtr extends Controller<Client> {
         super(Client.class);
     }
 
+    public List<Sell> findPurchases(Long clientId) {
+        List<Sell> purchases = null;
+
+        try {
+            purchases = find(clientId).getPurchases();
+        } catch (Exception e) {
+            purchases = null;
+        }
+
+        return purchases;
+    }
+
     public List<Client> findByName(String name) {
         EntityManager em = emf.createEntityManager();
         List<Client> customers = null;

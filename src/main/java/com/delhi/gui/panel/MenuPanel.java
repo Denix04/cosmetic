@@ -12,21 +12,31 @@ public class MenuPanel extends JPanel {
     private JButton fncBtn;
     private JButton sellsBtn;
     private JButton prodBtn;
+    private JButton clientBtn;
     private JButton quitBtn;
 
     public MenuPanel() {
-
         setLayout(null);
 
+        initBtns();
+        addBtns();
+        addActions();
+    }
+
+    private void initBtns(){
         prodBtn = new JButton("Productos");
         stockBtn = new JButton("Stock");
         sellsBtn = new JButton("Ventas");
         fncBtn = new JButton("Financias");
+        clientBtn = new JButton("Clientes");
         quitBtn = new JButton("Salir");
 
-        addBtns();
-        initBtns();
-        addActions();
+        prodBtn.setBounds   (300,025,150,50);
+        stockBtn.setBounds  (300,125,150,50);
+        sellsBtn.setBounds  (300,225,150,50);
+        clientBtn.setBounds (300,325,150,50);
+        fncBtn.setBounds    (300,425,150,50);
+        quitBtn.setBounds   (300,525,150,50);
     }
 
     private void addBtns() {
@@ -34,61 +44,43 @@ public class MenuPanel extends JPanel {
         add(stockBtn);
         add(sellsBtn);
         add(fncBtn);
+        add(clientBtn);
         add(quitBtn);
-    }
-
-    private void initBtns(){
-        prodBtn.setBounds   (300,100,150,50);
-        stockBtn.setBounds  (300,200,150,50);
-        sellsBtn.setBounds  (300,300,150,50);
-        fncBtn.setBounds    (300,400,150,50);
-        quitBtn.setBounds   (300,500,150,50);
     }
 
     private void addActions() {
 
-        prodBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(1000, 700);
-                ProductPanel pp = new ProductPanel(frm);
-                frm.add(pp);
-            }
+        prodBtn.addActionListener(e -> {
+            Frame prodFrm = new Frame(1000, 700);
+            ProductPanel prodPanel = new ProductPanel(prodFrm);
+            prodFrm.add(prodPanel);
         });
 
-        stockBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(1000, 700);
-                StockPanel pp = new StockPanel(frm);
-                frm.add(pp);
-            }
+        stockBtn.addActionListener(e -> {
+            Frame stockFrm = new Frame(1000, 700);
+            StockPanel stockPanel = new StockPanel(stockFrm);
+            stockFrm.add(stockPanel);
         });
 
-        sellsBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(1000, 700);
-                SellPanel pp = new SellPanel(frm);
-                frm.add(pp);
-            }
+        sellsBtn.addActionListener(e -> {
+            Frame sellFrm = new Frame(1000, 700);
+            SellPanel sellPanel = new SellPanel(sellFrm);
+            sellFrm.add(sellPanel);
         });
 
-        fncBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(1000, 700);
-                FinancePanel fp = new FinancePanel(frm);
-                frm.add(fp);
-            }
+        clientBtn.addActionListener(e -> {
+            Frame clientFrm = new Frame(1000,700);
+            ClientPanel clientPanel = new ClientPanel(clientFrm);
+            clientFrm.add(clientPanel);
         });
 
-        quitBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
+        fncBtn.addActionListener(e -> {
+            Frame fncFrm = new Frame(1000, 700);
+            FinancePanel fncPanel = new FinancePanel(fncFrm);
+            fncFrm.add(fncPanel);
         });
+
+        quitBtn.addActionListener(e ->  System.exit(0));
     }
     
 }

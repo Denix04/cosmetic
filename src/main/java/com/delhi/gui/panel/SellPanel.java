@@ -1,26 +1,26 @@
 package com.delhi.gui.panel;
 
-import java.awt.Frame;
-import java.awt.event.*;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import com.delhi.controller.SellCtr;
+import com.delhi.entity.Sell;
+import com.delhi.gui.*;
+
 public class SellPanel extends JPanel {
+    private SellCtr sellCtr;
+    private Frame frm;
 
     private DefaultTableModel prodTblMod;
     private JTable prodTbl;
     private JButton backBtn;
-    private Frame frm;
+    private JButton newSellBtn;
 
     public SellPanel(Frame frm) {
-        setLayout(null);
-
+        sellCtr = new SellCtr();
         this.frm = frm;
 
-        backBtn = new JButton("Volver");
-        initTblModel();
-        prodTbl = new JTable(prodTblMod);
+        setLayout(null);
 
         initCmp();
         addCmp();
@@ -28,22 +28,29 @@ public class SellPanel extends JPanel {
     }
 
     private void initCmp() {
-        backBtn.setBounds(0,0,100,30);
-        prodTbl.setBounds(30, 30,500,500);
+        backBtn = new JButton("Volver");
+        newSellBtn = new JButton("Nuevo");
+        initTblModel();
+        prodTbl = new JTable(prodTblMod);
+
+        backBtn.setBounds(0,0,99,30);
+        newSellBtn.setBounds(101,0,99,30);
+        prodTbl.setBounds(40,40,920,600);
     }
 
     private void addCmp() {
         add(backBtn);
+        add(newSellBtn);
         add(prodTbl);
     }
 
     private void addActions() {
+        backBtn.addActionListener(e -> frm.dispose());
 
-        backBtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frm.dispose();
-            }
+        newSellBtn.addActionListener(e -> {
+            Frame newSellFrm = new Frame(400,400);
+            NewSellPanel newSellPanel = new NewSellPanel(newSellFrm);
+            newSellFrm.add(newSellPanel);
         });
     }
 
@@ -52,7 +59,15 @@ public class SellPanel extends JPanel {
         prodTblMod = new DefaultTableModel(columnNames, 0);
         prodTblMod.addRow(columnNames);
 
-        Object[] row1 = {"one millon","Andrea","Transferencia","124.3"};
-        prodTblMod.addRow(row1);
+        for(Sell sell: sellCtr.findAll()) {
+            Object[] row = {
+                sell.getProduct(),
+                sell.getClient(),
+                sell.getPaymentMethod(),
+                sell.getSalePrice()
+            };
+
+            prodTblMod.addRow(row);
+        }
     }
 }

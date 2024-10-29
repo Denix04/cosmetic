@@ -1,11 +1,8 @@
 package com.delhi.gui.panel;
 
-import com.delhi.controller.SellCtr;
 import com.delhi.controller.StockCtr;
 import com.delhi.entity.*;
 import com.delhi.gui.Frame;
-import java.awt.event.*;
-import java.time.LocalDate;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -59,35 +56,17 @@ public class StockPanel extends JPanel {
 
     private void addActions() {
 
-        backBtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frm.dispose();
-            }
+        backBtn.addActionListener(e -> frm.dispose());
+
+        newStockBtn.addActionListener(e -> {
+            Frame nsf = new Frame(400,400);
+            NewStockPanel nsp = new NewStockPanel(nsf);
+            nsf.add(nsp);
         });
 
-        newStockBtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Frame frm = new Frame(400,400);
-                NewStockPanel nsp = new NewStockPanel(frm);
-                frm.add(nsp);
-            }
-        });
+        sellBtn.addActionListener(e -> sellFromTbl());
 
-        sellBtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sellFromTbl();
-            }
-        });
-
-        deleteBtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                deletingFromTbl();
-            }
-        });
+        deleteBtn.addActionListener(e -> deletingFromTbl());
     }
 
     private void initTblModel() {
@@ -120,6 +99,7 @@ public class StockPanel extends JPanel {
         NewSellPanel sellPanel = new NewSellPanel(sellFrame, stock);
         sellFrame.add(sellPanel);
 
-        //prodTblMod.removeRow(row);
+        stockCtr.delete(stockId);
+        prodTblMod.removeRow(row);
     }
 }

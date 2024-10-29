@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+import com.delhi.entity.enums.PaymentMethod;
+
 @Entity
 @Table(name = "Ventas")
 public class Sell {
@@ -23,6 +25,7 @@ public class Sell {
     private double salePrice;
     private LocalDate buyDate;
     private LocalDate sellDate;
+    private PaymentMethod paymentMethod;
     
 
     public Sell() {
@@ -30,12 +33,27 @@ public class Sell {
     }
 
     public Sell(Product product, double buyPrice, double salePrice,
-            LocalDate buyDate, LocalDate sellDate) {
+            LocalDate buyDate, LocalDate sellDate, 
+            Client client, PaymentMethod paymentMethod) {
         this.product = product;
         this.buyPrice = buyPrice;
         this.salePrice = salePrice;
         this.buyDate = buyDate;
         this.sellDate = sellDate;
+        this.client = client;
+        this.paymentMethod = paymentMethod;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 
     public void setSalePrice(double salePrice) {

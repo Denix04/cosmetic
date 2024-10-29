@@ -14,14 +14,36 @@ public class Client {
     private String surname;
 
     @OneToMany
-    private List<Product> purchases;
+    private List<Sell> purchases;
 
     public Client() {
     }
 
-    public Client(String name, String surname, List<Product> prods) {
+    public Client(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public Client(String name, String surname, List<Sell> prods) {
         this.name = name;
         this.surname = surname;
         this.purchases = prods;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
+    public String getSurname() {
+        return surname;
+    }
+
+    public List<Sell> getPurchases() {
+        return purchases;
+    }
+
+    @Override
+    public String toString() {
+        return (getName() + " " + getSurname());
     }
 }

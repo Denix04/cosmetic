@@ -1,8 +1,9 @@
 # TODO
-- gui for ventas
+- make clients
 - I have todo the logic for finance
 - make the client system
 - refactor a little of code
+- make the updates
 
 # Productos
 
