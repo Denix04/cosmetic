@@ -37,13 +37,13 @@ public class NewClientPanel extends JPanel {
         surnameLbl = new JLabel("Apellido");
         surnameTxt = new JTextField();
 
-        nameLbl.setBounds(30,30,100,30);
-        nameTxt.setBounds(150,30,100,30);
+        nameLbl.setBounds   (30,30,100,30);
+        nameTxt.setBounds   (150,30,100,30);
         surnameLbl.setBounds(30,60,100,30);
         surnameTxt.setBounds(150,60,100,30);
 
-        cancelBtn.setBounds(30,300,100,40);
-        submitBtn.setBounds(200,300,100,40);
+        cancelBtn.setBounds (30,300,100,40);
+        submitBtn.setBounds (200,300,100,40);
     }
 
     public void addCmp() {
@@ -63,6 +63,7 @@ public class NewClientPanel extends JPanel {
             ClientCtr clientCtr = new ClientCtr();
             clientCtr.create(
                     new Client(nameTxt.getText(),surnameTxt.getText()));
+            frm.dispose();
         });
 
     }
